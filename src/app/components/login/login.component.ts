@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   
   user!: SocialUser;
   loggedIn!: boolean;
+  GoogleLoginProvider = GoogleLoginProvider;
 
   constructor(private authService: SocialAuthService) { }
 
@@ -22,13 +23,6 @@ export class LoginComponent implements OnInit {
   //   this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   // }
 
-  signOut(): void {
-    this.authService.signOut();
-  }
-
-  refreshToken(): void {
-    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
-  }
 
   // handleGoogleSignIn(response: any) {
   //   console.log(response.credential);
@@ -47,6 +41,13 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
+  }
+  signOut(): void {
+    this.authService.signOut();
+  }
+
+  refreshGoogleToken(): void {
+    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 
 }

@@ -1,22 +1,26 @@
-<div class="testbutton">
-     <button>test</button>
+<div *ngIf="!user">
+  <asl-google-signin-button
+    type="icon"
+    size="medium"
+  ></asl-google-signin-button>
 </div>
 
 
-<div id="g_id_onload"
-     data-client_id="540271258342-88l1r5tkp7fh3sqjce93epkndui8ua99.apps.googleusercontent.com"
-     data-context="signin"
-     data-ux_mode="popup"
-     data-login_uri="http://localhost:3000/main"
-     data-auto_select="true"
-     data-itp_support="true">
-</div>
-
-<div class="g_id_signin"
-     data-type="standard"
-     data-shape="pill"
-     data-theme="outline"
-     data-text="continue_with"
-     data-size="large"
-     data-logo_alignment="left">
+<div *ngIf="user" class="card">
+  <div class="container">
+    <h4 class="card-title">{{ user.name }}</h4>
+    <p class="card-text">{{ user.email }}</p>
+    <p class="card-text">Logged in with {{ user.provider }}</p>
+  </div>
+  <div class="card-block">
+    <button (click)="signOut()">Sign out</button>
+  </div>
+  <div
+    class="card-block"
+    *ngIf="user.provider === GoogleLoginProvider.PROVIDER_ID"
+  >
+    <button (click)="refreshGoogleToken()">
+      Refresh google token
+    </button>
+  </div>
 </div>
