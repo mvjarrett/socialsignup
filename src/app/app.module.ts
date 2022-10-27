@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import {
   GoogleLoginProvider,
@@ -8,14 +9,17 @@ import {
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     SocialLoginModule
   ],
   providers: [ {
@@ -26,7 +30,7 @@ import { LoginComponent } from './components/login/login.component';
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            'test'
+            '540271258342-88l1r5tkp7fh3sqjce93epkndui8ua99.apps.googleusercontent.com'
           )
         },
         {
